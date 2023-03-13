@@ -32,10 +32,30 @@ app.use("/users", usersRouter);
 // app.use("/authors", authorRouter);
 // app.use("/publications", publicationRouter);
 
-db.sync()
+const bookModel = require("./schemas/book.schema");
+const authorModel = require("./schemas/author.schema");
+const publicationModel = require("./schemas/publication.schema");
+db.sync().then(() => {
+  console.log("db synced");
+  bookModel
+    .sync({ alter: true })
+    .then(() => {
+      console.log("table synced");
+    })
+    .catch((err) => console.log("Error: " + err));
+});
+authorModel
+  .sync({ alter: true })
   .then(() => {
-    console.log('db synced');
+    console.log("table synced");
   })
   .catch((err) => console.log("Error: " + err));
+publicationModel
+  .sync({ alter: true })
+  .then(() => {
+    console.log("table synced");
+  })
+  .catch((err) => console.log("Error: " + err))
+.catch((err) => console.log("Error: " + err));
 
 module.exports = app;
