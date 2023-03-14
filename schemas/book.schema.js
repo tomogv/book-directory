@@ -12,7 +12,7 @@ const bookModel = db.define('books', {
         type: Sequelize.INTEGER
     }, 
     isbn: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER 
     }
 
 });
