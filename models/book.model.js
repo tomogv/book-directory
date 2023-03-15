@@ -18,4 +18,4 @@ exports.update = (id, data) => {
 
 exports.delete = (id) => {
    return bookModel.destroy({where:{id:id}});
-}
+};

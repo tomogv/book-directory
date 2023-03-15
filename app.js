@@ -6,8 +6,8 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var booksRouter = require("./routes/book.route");
-// var authorRouter = require("./routes/author.route");
-// var publicationRouter = require("./routes/publication.route");
+var authorRouter = require("./routes/author.route");
+var publicationRouter = require("./routes/publication.route");
 
 const db = require("./configs/db.config.js");
 db.authenticate()
@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/books", booksRouter);
-// app.use("/authors", authorRouter);
-// app.use("/publications", publicationRouter);
+app.use("/authors", authorRouter);
+app.use("/publications", publicationRouter);
 
 const bookModel = require("./schemas/book.schema");
 const authorModel = require("./schemas/author.schema");
