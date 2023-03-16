@@ -18,4 +18,4 @@ exports.update = (id, data) => {
 
 exports.delete = (id) => {
    return publicationModel.destroy({where:{id:id}});
-}
+};
